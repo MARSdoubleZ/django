@@ -1,0 +1,40 @@
+{% extends 'home/myhome.html' %}
+{% block myhome %}
+    <br/>
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a id="a1" href="#draft" data-toggle="tab">草稿箱</a></li>
+    <li><a id="a2" href="#published" data-toggle="tab">已发布章节</a></li>
+    <li><a id="a3" href="#setting" data-toggle="tab">作品设置</a></li>
+    <li><a href="#recycle" data-toggle="tab">回收站</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="draft">
+        {% include "./draft.html" %}
+    </div>
+    <div class="tab-pane fade" id="published">
+        <p>已发布章节</p>
+    </div>
+    <div class="tab-pane fade" id="setting">
+        <p>作品设置</p>
+    </div>
+    <div class="tab-pane fade" id="recycle">
+        <p>回收站</p>
+    </div>
+</div>
+    <script>
+$(function(){
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+	    alert(e.target.id);
+		// 获取已激活的标签页的名称
+{#		var activeTab = $(e.target).text();#}
+		// 获取前一个激活的标签页的名称
+{#		var previousTab = $(e.relatedTarget).text();#}
+{#		$(".active-tab span").html(activeTab);#}
+{#		$(".previous-tab span").html(previousTab);#}
+	});
+});
+</script>
+
+
+
+{% endblock %}

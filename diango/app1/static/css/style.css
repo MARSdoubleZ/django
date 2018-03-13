@@ -1,0 +1,354 @@
+/*@charset "gb2312";*/
+/**
+ +------------------------------------------------------------------------------
+ * 开始网站样式重写(初始化)
+ +------------------------------------------------------------------------------
+ */
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}网站首页{% endblock %}
+
+{% block content %}
+
+html {
+    -webkit-text-size-adjust: none; /*解决chrome浏览器下字体不能小于12px*/
+}
+
+body {
+    color: #333;
+    font-family: "微软雅黑", Verdana, Arial, Helvetica, sans-serif;
+    background-color: #f8f8f8
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+    color: #333
+}
+
+a:hover {
+    text-decoration: none;
+    color: #4581e6
+}
+
+a:active {
+    star: expression(this.onFocus=this.blur());
+}
+
+a:focus {
+    outline: 0;
+}
+
+html {
+    zoom: 1;
+}
+
+html * {
+    outline: 0;
+    zoom: 1;
+}
+
+html button::-moz-focus-inner {
+    border-color: transparent !important;
+}
+
+body {
+    font-size: 14px;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    /*border-collapse:collapse;border-spacing:0;*/
+}
+
+fieldset, a img {
+    border: 0;
+}
+
+address, caption, cite, code, dfn, em, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+li {
+    list-style: none;
+}
+
+caption, th {
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+input[type="submit"], input[type="reset"], input[type="button"], button {
+    -webkit-appearance: none; /*去掉苹果的默认UI来渲染按钮*/
+}
+
+em, i {
+    font-style: normal;
+}
+
+/**
+ +------------------------------------------------------------------------------
+ * 结束网站样式重写(初始化)
+ +------------------------------------------------------------------------------
+ */
+
+/**
+ +------------------------------------------------------------------------------
+ * Public Class
+ +------------------------------------------------------------------------------
+ */
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    display: block;
+}
+
+.clear {
+    clear: both;
+}
+
+/* 清除浮动*/
+
+.colwrapper {
+    overflow: hidden;
+    zoom: 1 /*for ie*/;
+    margin: 5px auto;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.left {
+    float: left;
+    display: inline;
+}
+
+.right {
+    float: right;
+    display: inline;
+}
+
+.center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.show {
+    display: block;
+    visibility: visible;
+}
+
+.hide {
+    display: none;
+    visibility: hidden;
+}
+
+.block {
+    display: block;
+}
+
+.inline {
+    display: inline;
+}
+
+.transparent {
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5; /** Firefox 3.5即将原生支持opacity属性，所以本条属性只在Firefox3以下版本有效 ***/
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}
+
+.break {
+    word-wrap: break-word;
+    overflow: hidden; /*word-break:break-all;*/
+}
+
+.tal {
+    text-align: left
+}
+
+.tar {
+    text-align: right;
+}
+
+/*文字两侧对齐*/
+.justify {
+    text-align: justify;
+    text-justify: distribute-all-lines; /*ie6-8*/
+    text-align-last: justify; /* ie9*/
+    -moz-text-align-last: justify; /*ff*/
+    -webkit-text-align-last: justify; /*chrome 20+*/
+}
+
+.toe {
+    /*超出省略号*/
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    /* chrome*/
+    .justify:after {
+        content: ".";
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+        height: 0;
+    }
+}
+
+em {
+    font-style: italic !important;
+}
+
+strike {
+    text-decoration: line-through !important;
+}
+
+strong {
+    font-weight: bold !important;
+    text-indent: 0;
+}
+
+u {
+    text-decoration: underline !important;
+}
+
+
+
+
+#headerbox {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 83px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 20px #999
+}
+
+#headerbox .logo {
+    padding: 0px;
+}
+
+#headerbox .nav {
+    width: 700px;
+}
+.reg-btn {
+    padding-top: 10px;
+}
+
+
+#headerbox .nav li {
+    float: left;
+    margin-top: 20px;
+
+}
+
+#headerbox .nav li a {
+    color: red;
+    font-size: 16px;
+}
+
+#headerbox .nav .ico {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin-top: -5px;
+    margin-right: 10px
+}
+
+#headerbox .nav .ico01 {
+    background-position: 0 0;
+    margin-right: 0
+}
+
+#headerbox .nav .ico02 {
+    background-position: -113px 0;
+}
+
+#headerbox .nav .ico03 {
+    background-position: -113px 0;
+}
+#headerbox .nav .ico04 {
+    background-position: -339px 0;
+}
+#headerbox .nav .ico05 {
+    background-position: -452px 0;
+}
+#headerbox .nav .ico06 {
+    background-position: -565px 0;
+}
+
+
+
+.so {
+    position: relative;
+    float: left;
+    padding: 30px 110px 30px;
+}
+
+
+
+/*顶部*/
+.top-c {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 110px 30px 30px 110px;
+    background-color: inherit;
+}
+
+.nav-b {
+    margin-bottom: 20px;
+}
+
+.nav-b li {
+    float: left;
+    padding-right: 29px;
+    background: url(../images/back02.jpg) right center no-repeat;
+    margin-right: 29px;
+}
+
+.nav-b li.active {
+    background: none;
+}
+
+.nav-b li.active a, .nav-b li a:hover {
+    color: #3c75d3;
+}
+
+
+{% endblock %}
+
+
+

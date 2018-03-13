@@ -1,0 +1,25 @@
+{% extends 'admin/homeHead.html' %}
+{% block main %}
+    作品类别
+    <div style='width:390px'>
+        {% for key,value in rs.items %}
+            <div style='float:left'>
+                <table>
+                    {% for item in value %}
+                    <tr align='left'>
+                        {% if item.pid is None %}
+                    <td>+<td><td>{{ item.classname }}</td>
+                    {% else %}
+                    <td><td><td>&nbsp;&nbsp;{{ item.classname }}</td>
+                    {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+
+

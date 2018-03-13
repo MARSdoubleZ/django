@@ -1,0 +1,45 @@
+{% extends 'home/myhome.html' %}
+{% block myhome %}
+    <br/>
+    <table width="80%" align="center">
+        <tr>
+            <td align="left">当前作品总数1本</td>
+            <td align="right">
+                <a href="/showcreateworks">
+                    <button type="button" class="btn btn-primary">创建作品</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td>书名</td>
+            <td>最新章节</td>
+            <td>编辑分组</td>
+            <td>收藏</td>
+            <td>状态</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+         {% for item in rs %}
+            <tr>
+                <td>{{ item.workname }}</td>
+                <td>{{ item.curchapte }}</td>
+                <td>{{ item.typeoneid }}
+                    {{ item.typetwoid }}
+                </td>
+                <td>{{ item.cnum }}</td>
+                <td>{{ item.finishflag }}</td>
+                <td>
+                    {% if item.finishflag == 0 %}
+                        <a href="/worksmanage?worksid={{ item.id }}">写新章节</a>
+                    {% else %}
+                        完成
+                    {% endif %}
+                </td>
+            </tr>
+         {% endfor %}
+
+    </table>
+{% endblock %}

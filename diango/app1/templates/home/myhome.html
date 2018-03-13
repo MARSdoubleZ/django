@@ -1,0 +1,54 @@
+{% extends 'home/homeHead.html' %}
+{% block homeHead %}
+    <div class="row">
+        <div class="col-md-1">&nbsp;</div>
+        <div class="col-md-2" style="font-size:16px;margin-top: 9px;height: 400px;">
+            <table align="center" height="100%">
+                <tr>
+                    <td><a href="myreading">我正在读</a></td>
+                </tr>
+                <tr>
+                    <td>我的收藏</td>
+                </tr>
+                <tr>
+                    <td>朋友圈</td>
+                </tr>
+                <tr>
+                    <td>我的关注</td>
+                </tr>
+
+                {% if loginbean.role == 1 %}
+                    <tr>
+                        <td><a href="writerApply">成为作家</a></td>
+                    </tr>
+                {% elif loginbean.role == 2 %}
+                    <tr>
+                        <td>作家审核中</td>
+                    </tr>
+                {% elif loginbean.role == 3 %}
+                    <tr>
+                        <td><a href="myworks">作品管理</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">粉丝圈</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">作家圈</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">钱包设置</a></td>
+                    </tr>
+                {% endif %}
+
+            </table>
+        </div>
+
+        <div class="col-md-8" style="text-align: center;">
+
+            {% block myhome %}
+            {% endblock %}
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+{% endblock %}

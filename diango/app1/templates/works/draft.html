@@ -1,0 +1,48 @@
+<script>
+    function createChapter(){
+        $('#content').hide();
+        $('#showCreateChapter').show();
+    }
+    function cancelCreate(){
+        $('#showCreateChapter').hide();
+        $('#content').show();
+    }
+    function editChapter(chapterid){
+        //alert(chapterid);
+        $('#content').load('editChapter?chapterid='+chapterid);
+    }
+</script>
+<table width="100%">
+    <tr>
+        <td rowspan="2" width="120" style="border-right: 1px solid;" valign="top">
+            <br/>
+            <table align="center">
+                {% for item in rs %}
+                <tr><td align="left">
+                    <a href="#" onclick="editChapter({{ item.id }})">{{ item.chaptername }}</a>
+                    <br/>
+                </td></tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td align="right" style="border-bottom: 1px solid;">
+            <input type="button" value="新建章节" class="btn btn-success" onclick="createChapter()"/>
+            &nbsp;
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td id="content">内容</td>
+        <td id="showCreateChapter" align="center" style="display:none">
+            <br/>
+            <form action="./createChapter" method="post">
+                {% csrf_token %}
+                <input type="text" name="chaptername" class="form-control" placeholder="章节名称"/><br/>
+                <input type="hidden" name="worksid" value="{{ worksid }}"/>
+                <input type="submit" value="创建章节" class="btn btn-success"/>
+                &nbsp;
+                <input type="button" value="取消" class="btn btn-success" onclick="cancelCreate()"/>
+            </form>
+        </td>
+    </tr>
+</table>

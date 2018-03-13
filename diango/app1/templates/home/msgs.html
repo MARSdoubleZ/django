@@ -1,0 +1,17 @@
+{% extends 'home/myhome.html' %}
+{% block home %}
+<table align="center" class="table table-bordered">
+	<tr>
+		<td>发送者</td>
+		<td>消息内容</td>
+		<td>发送时间</td>
+	</tr>
+    {% for item in rs%}
+    	<tr>
+    		<td>{{item.sendname}}</td>
+    		<td>{{item.content}}</td>
+    		<td>{{item.createtime}}</td>
+    	</tr>
+    {% endfor %}
+</table>
+{% endblock %}

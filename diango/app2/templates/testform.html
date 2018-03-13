@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <h2>测试表单</h2>
+
+    <form action="/testformpost/" method="post">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <p>
+                {{ field.label_tag }}<br>
+
+                {{ field }}
+
+                {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                {% endfor %}
+
+            </p>
+        {% endfor %}
+
+        <button type="submit">提交</button>
+
+    </form>
+
+{% endblock %}

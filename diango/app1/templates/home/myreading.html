@@ -1,0 +1,21 @@
+{% extends 'home/myhome.html' %}
+{% block myhome %}
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td>我正在读</td>
+
+        </tr>
+        </thead>
+         {% for item in rs %}
+            <tr>
+                <td>{{ item.workname }}</td>
+            </tr>
+         {% endfor %}
+
+    </table>
+
+
+
+
+{% endblock %}

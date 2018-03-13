@@ -1,0 +1,60 @@
+<script>
+    function applyPass() {
+        if (confirm('确定通过？')) {
+            location.href = 'applyPass?id={{ id }}';
+        }
+    }
+
+    function applyFail() {
+       $('#refusePanel').show();
+    }
+    function hidRefusePanel(){
+        $('#refusePanel').hide();
+    }
+
+</script>
+<table class="table table-bordered">
+    <tr>
+        <td align="'right">姓名：</td>
+        <td align="left">{{ rs.realname }}</td>
+    </tr>
+    <tr>
+        <td align="right">电话:</td>
+        <td align="left">{{ rs.telnumber }}</td>
+
+    </tr>
+    <tr>
+        <td align="right">身份证号:</td>
+        <td align="left">{{ rs.idnumber }}</td>
+    </tr>
+    <tr>
+        <td align="right">身份证照片:</td>
+        <td align="left">
+            <img src="showImg?imgurl={{ rs.idimage }}" />
+        </td>
+    </tr>
+    <tr>
+        <td align="rignt">手持身份证照片</td>
+        <td align="left">
+            <img src="showImg?imgurl={{ rs.idperson }}" />
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <input type="button" value="审核通过" class="btn btn-primary" onclick="applyPass()"/>&nbsp;
+            <input type="button" value="审核驳回" class="btn btn-primary" onclick="applyFail()"/>
+        </td>
+    </tr>
+</table>
+
+<div id="refusePanel" style="background: green;position: relative;top:-300px;left:0px;padding: 12px;display: none">
+    驳回理由：</br>
+    <form method="post" action='/applyRefuse'>
+        {% csrf_token %}
+        <textarea name="content" class="form-control" rows="12" cols="60px"></textarea><br/>
+        <input type="hidden" name="receiveid" value="{{ rs.id }}">
+        <input type="submit" value="驳回"/>&nbsp;
+        <input type="button" value="取消" onclick="hidRefusePanel()"/>
+    </form>
+
+</div>

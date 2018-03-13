@@ -1,0 +1,45 @@
+<script>
+    function saveToDraft() {
+        chapterForm.pubflag.value=0;
+        $.post('saveChapter', $(chapterForm).serialize(),function (rs) {
+            alert(rs);
+        })
+
+    }
+    function saveToPub() {
+        chapterForm.pubflag.value=1;
+        $.post('saveChapter', $(chapterForm).serialize(),function (rs) {
+            alert(rs);
+        })
+
+    }
+</script>
+
+<form name="chapterForm" method="post" action="saveChapter">
+    {% csrf_token %}
+<table width="100%">
+    <tr>
+        <td>
+            <br/>
+            <input type="text" name="chaptername" class="form-control" value="{{ rs.0.chaptername }}"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br/>
+            <textarea name="content"  class="form-control" rows="12">{{ rs.0.content }}</textarea>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <br/>
+            <input type="hidden" name="chapterid" value="{{ rs.0.id }}">
+            <input type="hidden" name="pubflag" value="0">
+            <input type="hidden" name="worksid" value="{{ rs.0.worksid }}">
+            <input type="button" value="保存为草稿" class="btn btn-success" onclick="saveToDraft()"/>
+            &nbsp;&nbsp;
+            <input type="button" value="保存并发布" class="btn btn-success" onclick="saveToPub()"/>
+        </td>
+    </tr>
+</table>
+</form>

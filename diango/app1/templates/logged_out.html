@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}See you!{% endblock %}
+
+{% block content %}
+  <h2>Logged out</h2>
+  <p>你已经成功登出了.</p>
+  <p><a href="{% url 'login' %}">再次登录</a></p>
+  <p><a href="{% url 'index' %}">返回首页</a> </p>
+{% endblock %}

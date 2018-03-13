@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}See you!{% endblock %}
+
+{% block content %}
+
+
+    <div id="headerbox">
+        <h1 class="logo left"><a href="#"><img src="{% static 'images/logo.jpg' %}"> </a></h1>
+        <form class="so" target="_blank" action="http://search.17k.com/search.xhtml">
+            <input type="hidden" name="" value="0">
+            <input value="请输入书名或作者" class="q" type="text" name="c.q"
+                   confocus="this.value==this.defaultValue&&this.select()">
+            <input class="m" type="submit" value="搜索">
+
+        </form>
+
+
+        <ul class="nav right">
+            <li class="reg-btn">
+                {% if loginbean == None %}
+
+                    <button data-toggle="modal" data-target="#myModal">注册</button>
+
+                    <button data-toggle="modal" data-target="#myModala">登陆</button>
+
+
+                    <li><a href="#"><i class="ico ico01"></i>看过</a></li>
+                    <li><a href="#"><i class="ico ico02"></i>书架</a></li>
+                    <li><a href="#"><i class="ico ico03"></i>消息</a></li>
+                    <li><a href="#"><i class="ico ico04"></i>写书</a></li>
+                    <li><a href="#"><i class="ico ico05"></i>充值</a></li>
+                    </li>
+                    </ul>
+                {% else %}
+                    <div style="text-align: center;font-size:16px;">
+
+                        你好,{{ loginbean.nicheng }}&nbsp;
+                        <a href="#">新消息 <span class="badge">0</span></a>&nbsp;
+                        <a href="#">个人设置</a>&nbsp;
+                        <a href="/dengchu">注销</a>
+                        &nbsp;&nbsp;
+                    </div>
+
+
+                {% endif %}
+
+
+    </div>
+
+
+    <div class="top-c container">
+        <ul class="nav-b clearfix">
+            <li><a href="">首页</a></li>
+            <li><a href="">排行榜</a></li>
+            <li><a href="">分类</a></li>
+            <li><a href="">我要写书</a></li>
+            <li><a href="">男生频道</a></li>
+            <li><a href="">女生频道</a></li>
+            <li><a href="">个性频道</a></li>
+            <li><a href="">IP改编</a></li>
+            <li><a href="">免费</a></li>
+            <li><a href="">完本</a></li>
+            <li><a href="">论坛</a></li>
+        </ul>
+
+        <div class="ZXGX">
+            <div class="Title1">
+                <h1 class="tit">最新更新</h1>
+                <div class="box">
+                    <div class="Tab_tit" id="TAB">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <td>书名</td>
+                            </tr>
+                            </thead>
+                             {% for item in rs %}
+                                <tr>
+                                    <td>{{ item.workname }}</td>
+                                </tr>
+                             {% endfor %}
+                             <thead>
+                            <tr>
+                                <td>最新章节</td>
+                            </tr>
+                            </thead>
+                             {% for item in ro %}
+                                <tr>
+                                    <td>{{ item.chaptername }}</td>
+                                </tr>
+                             {% endfor %}
+
+                        </table>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">开始演示模态框</button>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">注册</h4>
+                </div>
+                <div class="modal-body">
+                    {% include 'users/register.html' %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div class="modal fade" id="myModala" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">登陆</h4>
+                </div>
+                <div class="modal-body">
+                    {% include 'users/login.html' %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
+
+{% endblock %}
